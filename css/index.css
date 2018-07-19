@@ -141,7 +141,6 @@ img{
 }
 #social{
     height: 150px;
-    /*background: #00CFBD;*/
     text-align: center;
 }
 #social li{
@@ -202,7 +201,6 @@ img{
 #contact .input{
     float: left;
     width: 440px;
-
 }
 #contact textarea{
     float: left;

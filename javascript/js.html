@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var x = Math.random();
+    var y = Math.random();
+    console.log(x);
+    console.log(y);
+    x<y?console.log(y):console.log(x);
+    var today = new Date();
+    var year = today.getFullYear();
+    console.log(year);
+    if((year%4==0 && year%100!=0) || year%400==0){
+        console.log('今年是闰年');
+    }else{
+        console.log('今年不是闰年');
+    }
+</script>
+</body>
+</html>

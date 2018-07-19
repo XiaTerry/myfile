@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d开门demo</title>
+    <style>
+        .door-box{
+            max-width: 100%;
+            width: 375px;
+            height: 628px;
+            background-color: #2a273c;
+            margin: 40px auto;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .door{
+            animation: flyIntoRoom 3s ease infinite;
+        }
+        .door-box div{
+            position: absolute;
+        }
+        .wall{
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 46px;
+            border-bottom: 3px solid #211820;
+            background-color:#768bb6;
+            margin: auto;
+            box-shadow:0 -200px #768bb6;
+        }
+        .door-border{
+            top: 28px;
+            left: 40px;
+            right: 40px;
+            bottom: 0;
+            border:3px solid #211820;
+            border-radius: 2px 2px 0 0;
+            border-bottom: 0;
+            background-color: #183269;
+        }
+        .door-frame{
+            top: 10px; left: 9px; right: 9px; bottom: 0;
+            border: 3px solid #211820;
+            border-radius: 2px 2px 0 0;
+            border-bottom: 0;
+            -webkit-perspective: 1200px;
+            perspective: 1200px;
+            background-color: white;
+        }
+        .door-frame img{
+            width: 265px;
+        }
+        .door{
+            left: 0; top: 0; right: 0;  bottom: 0;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            transform: rotateY(0deg);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .door-face-1, .door-face-0{
+            left: -3px; top: -3px; right: -3px; bottom: -3px;
+            border: 3px solid #211820;
+            background-color: #295489;
+        }
+        .door-face-0{
+            transform: translateZ(-12px);
+        }
+        .door-face-1{
+            transform:translateZ(0);
+        }
+        .door-face-2{
+            height: 6px;
+            left: -3px; right: -3px; top: 0;
+            border: 3px solid #211820;
+            border-radius: 2px;
+            background-color: #0c2e59;
+            transform: translate3D(0, -7.5px, -6px) rotateX(90deg);
+        }
+        .door-face-3{
+            width: 6px;
+            top: -3px; right: 0; bottom: -3px;
+            border: 3px solid #211820;
+            border-radius: 2px;
+            background-color: #0c2e59;
+            transform: translate3D(7.5px, 0, -6px) rotateY(90deg);
+        }
+        .door-card{
+            width: 165px;
+            height: 60px;
+            background-color: #c1d0ec;
+            top: 60px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+            border:3px solid;
+            border-radius:5px;
+            line-height: 60px;
+        }
+        .door-btn{
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin-top:140px;
+            font-size:24px;
+            color: #9dbce3;
+            line-height: 36px;
+        }
+        .door-in{
+            width: 104px;
+            height: 40px;
+            border-radius: 40px;
+            border:2px solid;
+            line-height:40px;
+            background-color: #eacc86;
+            font-size: 24px;
+        }
+        @keyframes flyIntoRoom{
+            from{
+                transform:scale(1) translateZ(0);
+                opacity: 1;
+            }
+            to{
+                transform:rotateY(90deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div id="door-box" class="door-box">
+    <div class="wall">
+        <div class="door-border">
+            <div class="door-frame">
+                <img src="img/timg.jpg" alt="">
+                <!--门-->
+                <div id="door" class="door">
+                    <div id="light"></div>
+                    <!--后门-->
+                    <div class="door-face-0"></div>
+                    <!--三个面-->
+                    <div class="door-face-2"></div>
+                    <div class="door-face-1">
+                        <!--门上的挂牌-->
+                        <div class="door-card">我的书房</div>
+                        <!--进入门的按钮-->
+                        <div class="door-btn">
+                            <button id="door-btn-in" class="door-in">开门</button>
+                        </div>
+                    </div>
+                    <div class="door-face-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
