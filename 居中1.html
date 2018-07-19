@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>overflow:hidden;产生bfc</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: #ff0036;
+            overflow: hidden;/*浮出隐藏*/
+            position: absolute;/*相对定位*/
+            float: left;/*浮动*/
+            display: inline-block;/*变为行块级元素*/
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+            margin: 100px auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2"></div>
+</div>
+</body>
+</html>

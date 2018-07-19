@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>老版本弹性盒模型</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .content{
+            display: -webkit-box;
+        }
+        div{
+            height: 300px;
+        }
+        .div1{
+            -webkit-box-flex: 1;
+            background: #ffff00;
+        }
+        .div2{
+            -webkit-box-flex: 2;
+            background: #ff00ff;
+        }
+        .div3{
+            -webkit-box-flex: 1;
+            background: #ff0036;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="div div1"></div>
+    <div class="div div2"></div>
+    <div class="div div3"></div>
+</div>
+
+</body>
+</html>
