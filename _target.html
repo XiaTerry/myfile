@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: #ff0036;
+        }
+        #menu{
+            height: 30px;
+            /*margin: 0 auto;*/
+            /*background: #00ff00;*/
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+        #menu li{
+            width: 100px;
+            height: 30px;
+            list-style: none;
+            background: #cccccc;
+            float:left;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #div1{
+            height: 500px;
+            margin-top: 500px;
+            background: #00ff00;
+        }
+        #div2{
+            height: 600px;
+            background: #ffff00;
+        }
+        #div3{
+            height: 800px;
+            background: #0000ff;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li><a href="#div2">菜单1</a></li>
+    <li><a href="#div1">菜单2</a></li>
+    <li><a href="#div3">菜单3</a></li>
+</ul>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+
+</body>
+</html>
