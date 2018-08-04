@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let和const</title>
+</head>
+<body>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        // let [a,b,c] = [1,2,3];
+        // console.log(a,b,c);
+        // let {name,age}={
+        //     name:'zhangsan',
+        //     age: 18
+        // }
+        // console.log(name,age);
+        // function foo({name,age,school="黑大"}){
+        //     let obj ={
+        //         name:'lisi',
+        //         age:18
+        //     }
+        // }
+        // let obj = {
+        //     name:'lisi',
+        //     age:18
+        // }
+        // console.log(123);
+        // foo(obj);
+
+        // var arrayLike={
+        //     '0':'a',
+        //     '1':'b',
+        //     '2':'c',
+        //     length:3
+        // }
+        // var arr1 = [].slice.call(arrayLike);
+        // let arr2 = Arry.from(arrayLike);
+        // console.log(arr1);
+        // function foo(){
+        //     let arr = [1,2,3,4,5,6,7,8];
+        //     console.log(arr);
+        //     return arr.splice(3,0,3);
+        // }
+        // foo();
+        
+        //变量的赋值解构
+        // let [a,b,c] = [1,2,3];
+        // console.log(a,b,c);
+
+        // let [foo,[[bar],baz]] = [1,[[2],3]];
+        // console.log(foo,bar,baz);
+
+        // let [head,...tail] = [1,2,3,4];
+        // console.log(head,tail);
+
+        // let [x,y,...z] = ['a'];
+        // console.log(x,y,z);
+            
+        // let [foo] = [];
+        // console.log(foo);
+        // let [bar,foo] = [1];
+        // console.log(bar,foo);
+
+        // let [x,y] = [1,2,3];
+        // let [a,[b],d] = [1,[2,3],4];
+        // console.log(x,y,a,b,d);
+
+        // let [foo] = 1;
+        // console.log(foo);
+
+        // let [x,y,z] = new Set(['a','b','c']);
+        // console.log(x,y,z);
+
+
+        // function foo(...arg) {
+        //     console.log(arg);
+        // }
+        // foo(1, 2);
+        // foo(1, 2, 3); 
+
+        // let arr1 = [1, 2];
+        // let arr2 = [3, 4];
+
+        // let arr3 = [3, ...arr1, 4];
+        // console.log(arr3); 
+
+        // let arr1 = [1, 2, 3];
+        // let arr2 = arr1;
+        // console.log(arr2);
+        // arr1.push(4);
+        // console.log(arr2);
+
+        // let arr1 = [1,2,3];
+        // arr1.push(4);
+        // let arr2 = [...arr1]; // new Array();
+        // console.log(arr2); 
+
+        // let arr1 = [1, 2];
+        // let arr2 = [3, 4];
+        // let arr3 = [...arr1, ...arr2];
+        // console.log(arr3); 
+
+        // let obj1 = {
+        //     name: 'zs',
+        //     age: 18
+        // };
+
+        // let obj2 = {
+        //     age: 20,
+        //     school: '黑大'
+        // };
+
+        // // $.extend();
+        // let obj3 = {...obj1, ...obj2};
+        // console.log(obj3); 
+
+
+        // const {a, b, c} = import('xx');
+
+        // let obj1 = {
+        //     name: 'zs',
+        //     age: 18
+        // };
+
+        // let {name, age} = obj1;
+        // console.log(name, age); 
+
+        // function foo(a, b, ...arg) {
+        //     console.log(a);
+        //     console.log(b);
+        //     console.log(arg);
+        // }
+
+        // foo(1, 2, 3, 4, 5, 6, 7);
+
+        // let str = '123@456@789';
+        // let str1 = 'hello world';
+        // console.log(str1.split(' '));//将带有特定字符的字符串拆分为子字符串
+        // console.log(str.split('@')); 
+
+        // let h = 'hello';
+        // let a = 5, b = 6;
+        // let str = 'as<h1>h1h1h1</h1>dfa'
+        // +'sfasf'+ h +'saf'+ (a + b) +'sad'
+        // +'fas';
+        // document.write(str);  
+
+
+        // let h = 'hello';
+        // let a = 5, b = 6;
+        // let str = `asdfas${h}fasd
+        // fsadf${a+b}asfa<h1>h1h1h1</h1>sf
+        // asfs`;
+        // document.write(str); 
+
+        // let str2 = `ash${h}fasd${a+b}as<h1>hhaha</h1>`;//``可实现字符串的拼接。需要加${}；
+        // document.write(str2);
+
+        // let str = 'hello world';
+        // console.log(str.indexOf('w'));//索引字符串中某个字符的位置以0开头
+        // console.log(str.indexOf('llx'));
+        // console.log(str.includes('llx'));//索引包含字符串的方法返回Boolean类型。
+        // console.log(str.startsWith('he'));//索引以某个字符串开始的字符串的方法返回Boolean类型。
+        // console.log(str.endsWith('ld'));//索引以某个字符串结束的字符串的方法返回Boolean类型。
+
+        // let str = 'xy';
+        // console.log(str.padStart(8, 'abc'));//在字符串str中增加到8个字符串以abc字符串开始
+        // console.log(str.padEnd(8, 'abc'));//在字符串str中增加8个到8个字符串以abc字符串结束
+
+        // console.log(str.repeat(5));//将字符串‘xy’重复5次输出
+
+        // let arr = ['a', 'b', 'c', 'd'];
+        // console.log(arr.join(''));
+
+//         let arr = [1, 2, 3, 4, 5, 6];
+//         arr.splice(2, 0, 8);
+//         arr.splice(2, 2, 8, 9);
+//         arr.splice(2, 2);
+//         arr.splice(2);
+//         console.log(arr.splice(2, 2, 8, 9))
+//         // arr.splice(n, 1);
+//         console.log(arr); 
+
+        // let movieUrl = 'https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/in_theaters';
+        // Ajax 原理
+
+        // 创建 XMLHttpRequest 对象
+        // var xmlhttp;
+        // if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        //     xmlhttp = new XMLHttpRequest();
+        // } else {// code for IE6, IE5
+        //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        // }
+
+        // // 发送请求
+        // xmlhttp.open("GET", movieUrl, true);
+        // xmlhttp.send();
+
+        // // 服务端响应
+        // xmlhttp.onreadystatechange = function () {
+        //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //     //    console.log(xmlhttp.responseText);
+        //        let obj = JSON.parse(xmlhttp.responseText);
+        //        let obj1 = xmlhttp.responseText;
+        //        let obj2 = JSON.parse(obj1);
+        //        console.log(obj2.title);
+        //     //    console.log(obj.subjects[0]);
+        //     //    document.write(obj.subjects[0]);
+        //     }
+        // }
+
+        //通过Jquery实现ajax请求
+
+        // $.get(movieUrl,function(res){
+        //     console.log(res.subjects);
+            
+        // })
+
+        setInterval(() => 
+        { const now = new Date();
+        const hours = now.getHours().toString(); 
+        const minutes = now.getMinutes().toString();
+        const seconds = now.getSeconds().toString(); 
+        console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`);
+        },1000) 
+        
+    </script>
+</body>
+</html>

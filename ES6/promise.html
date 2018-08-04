@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+
+        // $.get('a.json',res=>{
+        //     console.log(res);
+        //     $.get('b.json',res=>{
+        //         console.log(res);
+        //         $.get('c.json',res=>{
+        //             console.log(res);
+        //         });
+        //     });
+        // });
+
+        new Promise((resolve,reject)=>{
+            $.get('a.json',res=>{
+                console.log(res.a);
+                reject();
+            });
+        }).then((resA)=>{
+            console.log('a成功');
+            $.get('b.json',resA=>{
+                console.log(resA);
+            });
+        },(resB)=>{
+            console.log('a失败');
+            // console.log(resB);
+            $.get('c.json',res=>{
+                console.log(res.c);
+            })
+        }).then((resB)=>{
+            console.log('b成功');
+        })
+        // const promise = new Promise(function(resolve,reject){
+        //     if(){
+        //        resolve(value); 
+        //     }else{
+        //         reject(error);
+        //     }
+        // })
+    </script>
+</body>
+</html>
