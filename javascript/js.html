@@ -5,20 +5,390 @@
     <title>Title</title>
 </head>
 <body>
+<!--<img src="" alt="" title="1.jpg">-->
+<!--<img src="" alt="">-->
+<button>wrap/unwrap</button>
+<p>Hello</p>
+<p>cruel</p>
+<p>World</p>
+<script src="../jQuery/jquery-1.12.4.js"></script>
 <script>
-    var x = Math.random();
-    var y = Math.random();
-    console.log(x);
-    console.log(y);
-    x<y?console.log(y):console.log(x);
+    $(function(){
+        // $('img').attr({
+        //     src:'../img/1.jpg',
+        //     alt:'jQuery',
+        //     title:'hello'
+        // })
+        // $("img").attr("src", function() {
+        //     return "../img/" + this.title;
+        // });
+        $("button").toggle(function(){
+            $("p").wrap("<div></div>");
+        }, function(){
+            $("p").unwrap();
+        });
+    });
+    // var x = Math.random();
+    // var y = Math.random();
+    // console.log(x);
+    // console.log(y);
+    // x<y?console.log(y):console.log(x);
+    // var today = new Date();
+    // var year = today.getFullYear();
+    // console.log(year);
+    // if((year%4==0 && year%100!=0) || year%400==0){
+    //     console.log('今年是闰年');
+    // }else{
+    //     console.log('今年不是闰年');
+    // }
+    //判断两个随机数的大小
+    // function max(x,y){
+    //    return x>y?x:y;
+    // }
+    // var x = Math.random();
+    // var y = Math.random();
+    // console.log('随机数x=' + x + 'y=' + y +'最大值是' + max(x,y));
+    /*判断年份是否为闰年
     var today = new Date();
     var year = today.getFullYear();
-    console.log(year);
-    if((year%4==0 && year%100!=0) || year%400==0){
-        console.log('今年是闰年');
-    }else{
-        console.log('今年不是闰年');
+    function getLeapYear(year){
+        if((year%4 == 0 && year%100 !=0) ||year%400==0){
+            return true;
+        }
+            return false;
     }
+
+    if(getLeapYear(year)==true){
+        // console.log('今年是闰年');
+        document.write('今年是闰年');
+    }else if(getLeapYear(year)==false){
+        // console.log('今年不是闰年');
+        document.write('今年不是闰年');
+    }
+    */
+
+    /*1.编写程序．通过用户输入的年龄判断是哪个年龄段的人
+    （儿童：年龄＜14；青少年：14<=年龄＜24；青年：24<年龄＜40; 中年：40＜=年龄＜60; 老年：年龄>=60）
+    ，并在页面上输出判断结果。*/
+    // window.prompt('请输入你的年龄');
+    // document.write('请输入你的年龄');
+    /* var age = window.prompt();
+     function fn(age){
+         if(age < 14){
+             // console.log('儿童');
+             document.write('儿童');
+         }else if(14 <= age && age < 24){
+             document.write('青少年');
+         }else if(24 < age && age < 40){
+             document.write('青年');
+         }else if(40 <= age && age < 60){
+             document.write('中年');
+         }else{
+             document.write('老年');
+         }
+     }
+     fn(age);
+    */
+    //2.编写程序，根据用户输入的一个数字(0~6)．通过警示对话框显示对应的星期几
+    // (0: 星期日; 1: 星期一;……6: 星期六;)。
+    // var day = window.prompt();
+    // function week(day){
+    //     switch(day){
+    //         case "0":
+    //             alert('星期日');
+    //             break;
+    //         case "1":
+    //             alert('星期一');
+    //             break;
+    //         case "2":
+    //             alert('星期二');
+    //             break;
+    //         case "3":
+    //             alert('星期三');
+    //             break;
+    //         case "4":
+    //             alert('星期四');
+    //             break;
+    //         case "5":
+    //             alert('星期五');
+    //             break;
+    //         case "6":
+    //             alert('星期六');
+    //             break;
+    //     }
+    // }
+    // week(day);
+
+    //计算10！
+    // var n = window.prompt();
+    /*function factorial(n){
+        var sum = 1;
+        for(var i = 1;i <= n ;i++){
+           sum=sum*i;
+        }
+        return sum;
+    }
+    // factorial(n);
+    // console.log(factorial(n));
+
+
+    //计算1！+2！+3！+4！+.....+10！的结果
+    var n = window.prompt();
+    function fn(n) {
+        var m=1,sum=0;
+        for(var j = 1;j <= n;j++){
+            m=m*j;
+            sum=sum+m;
+        }
+        return sum;
+    }
+    fn(n);
+    console.log(fn(n));*/
+
+
+    /*function fn() {
+        for(var i = 1;i <=5;i++){
+            for(var j = 1;j <= i;j++){
+                document.write(' '+j);
+            }
+            document.write("<br>");
+            document.write("<br>");
+        }
+
+
+    }
+    fn();*/
+
+
+
+    // function fn() {
+    //     for(var i = 1;i <=5;i++){
+    //         for(var j = 1;j <= i;j++){
+    //             document.write(" "+"*");
+    //         }
+    //         document.write("<br>");
+    //         document.write("<br>");
+    //     }
+    // }
+    // fn();
+    //
+    // function f(n) {
+    //     for(var i=1;i<=5;i++){
+    //         for(var k=1; k<=n-i;k++){
+    //             document.write("&nbsp;")
+    //         }
+    //         for(var j=1;j<=i;j++){
+    //             document.write(" "+"*");
+    //         }
+    //         document.write("<br>");
+    //         document.write("<br>");
+    //     }
+    // }
+    // f(5);
+
+    // function f() {
+    //     // var = n;
+    //     for(var i=100;i<=999;i++){
+    //         if((i-2)%4==0 && (i-3)%7==0 && (i-5)%9==0){
+    //             document.write(i+"<br>");
+    //         }
+    //     }
+    // }
+    //  f();
+    // console.log(f());
+    /*四位数ABCD
+    * A=Math.floor(n/1000);
+    * B=Math.floor(n/100)%10;
+    * C=Math.floor(n/10)%10;
+    * D=(n/10);
+    * */
+    // function f(){
+    //     for(var i=1000;i<=9999;i++){
+    //         if(i%13==0 && (Math.floor((i/100)%10))+Math.floor((i/10)%10)==Math.floor((i/1000))){
+    //             document.write(i+"<br>");
+    //         }
+    //     }
+    // }
+    // f();
+
+
+    // function sum(x){
+    //     return 4*Math.pow(x,2)+3*x+2
+    // }
+    // console.log(sum(3));
+
+    // function min(x,y){
+    //     return y>x?x:y;
+    // }
+    // console.log(min(2,3));
+
+    // function f(n){
+    //     var sum=0;
+    //     for(var i=1; i<=n; i++){
+    //         if(i%3==0 && i%5==0 && i%7==0){
+    //             sum=sum+1;
+    //             document.write(i+" ");
+    //             if(sum%6==0){
+    //                 document.write("<br>");
+    //             }
+    //         }
+    //
+    //     }
+    // }
+    // f(1000);
+    // function prime(){
+    //     var sum=0;
+    //     for (var a=100;a<=1000;a++)
+    //     {
+    //         var flag=0;
+    //         var i= 2;
+    //         while (i<=Math.sqrt(a))
+    //         {
+    //             if (a%i==0)
+    //             {
+    //                 flag=1;
+    //                 break;
+    //             }
+    //             i++;
+    //         }
+    //         if (flag==0){
+    //             document.write(a+" ");
+    //             sum=sum+1;
+    //             if(sum % 6 ==0){
+    //                 document.write("<br>");
+    //             }
+    //         }
+    //     }
+    //
+    // }
+    // prime();
+
+
+    //求PI的值
+    // function getPI(n){
+    //     var pi=0;
+    //     for(var i=1; i<=n; i++){
+    //         pi += 4*(Math.pow(-1,i-1))/(2*i-1);
+    //     }
+    //     return pi;
+    // }
+    // // console.log(p(100));
+    // var arr = [100,500,1000,10000];
+    // for(var i=0;i<arr.length;i++){
+    //     console.log(getPI(arr[i]));
+    // }
+    //求游戏概率
+    // function p(n, x) {
+    //     var sum = 0;
+    //     for (var i = 1; i <= n; i++) {
+    //         var num1 = Math.floor(Math.random() * 9 + 1);
+    //         var num2 = Math.floor(Math.random() * 9 + 1);
+    //         var num3 = Math.floor(Math.random() * 9 + 1);
+    //         console.log(num1 + " ", num2 + " ", num3 + " ");
+    //         if (num1 == x || num2 == x || num3 == x) {
+    //             sum = sum + 1;
+    //         }
+    //     }
+    //     return (sum / n);
+    // }
+    //
+    // var n = window.prompt();
+    // document.write(p(n, 8));
+    // 求1+2+3+4+...+n
+    // function sumSolution(n)
+    // {
+    //     // debugger;
+    //     var sum = n;
+    //     sum && (sum += sumSolution(n-1));
+    //     return sum;
+    // }
+    // console.log(sumSolution(500));
+
+    // 斐波纳Fibonacci 1 1 2 3 5 8 13
+    // function fibonacci(n){
+    //     debugger;
+    //     if(n==1 || n==2){
+    //         return 1;
+    //     }
+    //     return fibonacci(n-1) + fibonacci(n-2);
+    // }
+    // console.log(fibonacci(5));
+    /*
+    * 递归算法5 4 3 2 2 3 4 5
+    * */
+    // function rec(x){
+    //     debugger;
+    //     if(x!==1){
+    //         console.log(x);
+    //         rec(x-1);
+    //         console.log(x);
+    //     }
+    // }
+    // rec(5);
+    /*
+    * 编制一个将两个字符串交叉合并的函数Merge(s1,s2)，
+    * 例如Merge("123","abc"）的返回结果是"1a2b3c"，
+    * 如果两个字符串的长度不同，那么就将多余部分直接合并到结果字符串的末尾，
+    * 如Merge("123456",''abc''）的返回结果是”1a2b3c456”。
+    *
+    * */
+    // function merge(s1,s2){
+    //     var str='';
+    //     var len = s1.length>s2.length?s1.length:s2.length;
+    //     for(var i=0; i <= len;i++){
+    //         str += s1.charAt(i)+s2.charAt(i);
+    //     }
+    //     return str;
+    // }
+    // console.log(merge('123456','abd'));
+    // var str = '1234'
+    // for(var i=0;i<=str.length;i++){
+    //     console.log(str.charAt(i))
+    // }
+    // var str =['1','2','3','adf'];
+    // console.log(str);
+    // var str = new Array('c','2','d');
+    // for(var i=0;i<str.length;i++){
+    //     console.log(str[i]);
+    // }
+
+
+    /*
+    * 编制一个从字符串中收集数字字符（"0"',"1"，…"9"）
+    * 的函数CollectDigits(s)，它从字符串s中顺序取出数字，
+    * 并且合并为一个独立的字符串作为函数的返回值。
+    * 例如函数调用CollectDigits("1abc23def4"）的返回值是字符串"1234"。
+    * */
+    // function collectDigits(s){
+    //     var str='';
+    //     for(var i=0,len = s.length;i<len;i++){
+    //         if(s[i]>='0' && s[i]<='9'){
+    //             // str +=s.charAt(i);/*用string自带的对象获取字符串中的字符位置*/
+    //             str +=s[i];
+    //         }
+    //     }
+    //     return str;
+    // }
+    // console.log(collectDigits('1abc23def4'));
+    // // var str = ('12343');
+    // // console.log(str.charAt(5));
+    // var str = new Array('1','d','f');
+    // console.log(str[2]);
+
+    // function getNum(n){
+    //     let num = 0;
+    //     let flage = true;
+    //     for(let i=0;i<=n;i++) {
+    //         if (num === 1) {
+    //             flage = true;
+    //         }
+    //         if (num === 9) {
+    //             flage = false;
+    //         }
+    //         flage ? num++ : num--;
+    //     }
+    // }
+    // getNum();
 </script>
 </body>
 </html>
