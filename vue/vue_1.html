@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* *{
+            margin: 0;
+            padding: 0;
+        } */
+    </style>
+</head>
+<body>
+    <div id="nav">
+        {{name}}
+        {{age}}
+        <span v-html="rawHtml"></span>
+        <ul>
+            <li v-for="(ch,index) in school">
+                {{ch}}{{index}}
+            </li>
+        </ul>
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <div id="demo">
+        <p>{{message}}</p>
+        <input v-model="message">
+            
+        </input>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#nav',
+            data:{
+                school:['heida','lg','lida'],
+                name:'tairui',
+                age:20,
+                rawHtml:'<h2>你好</h2>',
+                seen:true
+            }
+        })
+        var vm1 = new Vue({
+            el:'#demo',
+            data:{
+                message:'hello vue.js'
+            },
+            methods:{
+                show(){
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

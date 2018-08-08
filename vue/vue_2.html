@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background-color: #fff;
+        }
+        li{
+            list-style: none;
+        }
+        h2{
+            text-align: center;
+            font-size: 40px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #000;
+        }
+        #menu li{
+            width: 400px;
+            height: 40px;
+            margin-bottom: 30px;
+            background: #ccc;
+            line-height: 40px;
+            position:relative;
+        }
+        #menu li span{
+            position:absolute;
+            right: 10px;
+        }
+        #menu li em{
+            cursor:pointer;
+        }
+        #content .add{
+            margin-left: 40px;
+            /* margin-right: 20px; */
+            box-sizing: border-box;
+        }
+        #mc,#price{
+            width: 100px;
+        }
+        #content{
+            width: 500px;
+            height: 600px;
+            background-color:silver;
+           
+        }
+        #menu .red{
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h2>todoList</h2>
+        <div class="add">
+            <label for="mc">名称：</label>
+            <input type="text" id="mc" placeholder="请输入产品名称" v-model="productName">
+            <label for="price">价格：</label>
+            <input type="text" id="price" v-model.number="yun"> 
+            <button @click="increase(list)">增加</button>
+        </div>
+        <div class="add">
+            <input type="text" v-model="name">
+            <p>{{name}}</p>
+            <button @click="query(list)">查询</button>
+        </div>
+        
+        <ul id="menu">
+            <li v-for="(list,index) in  list" @click="selected(list,index)" v-bind:class="{red:list.isRed}">
+                <input type="checkbox" checked="checked">
+                <em @click="del(list,index)">[X]</em>{{list.name}}
+                <span>{{list.price}}</span>
+            </li>
+             <button @click="del1(list)">删除选中</button>
+            <span>总价：</span>{{sum}}
+        </ul>
+       
+    </div>
+    
+    <script src="vue.js"></script>
+    <script>
+        // console.log(vm);
+        var vm = new Vue({
+        el:'#content',
+        data:{
+            sum:0,
+            name:'',
+            productName:'',
+            yun:null,
+            list:[
+                {
+                    name:'衣服',
+                    price:123,
+                    isRed:false,
+                },
+                {
+                    name:'鞋',
+                    price:564,
+                    isRed:false
+                },
+                {
+                    name:'iphoneX',
+                    price:8888,
+                    isRed:false
+                },
+                {
+                    name:'电脑',
+                    price:986,
+                    isRed:false
+                }
+            ],
+        },
+        computed:{
+         
+        },
+        methods:{
+            selected(list,index){
+                list.isRed = !list.isRed;
+                // console.log(list.price)
+                if(list.isRed == true){
+                    this.sum = this.sum + list.price;
+                }else{
+                    this.sum = this.sum -list.price;
+                }
+                // console.log(list.name);
+            },
+            query(list){
+                // let arr = [];
+                //  if(indexOf(this.name){
+
+                //  }
+                for(let i=0;i<this.list.length;i++){
+                    if(this.list[i].name.indexOf(this.name)!=-1){
+                        this.list.filter(function(x,i){
+                            return i=0;
+                        })
+                    // console.log(this.list[i].name.indexOf(this.name));
+                    }
+                }
+            },
+            increase(list){
+                let obj = {name,price};
+                obj.name=this.productName;
+                obj.price = this.yun;
+                list.push(obj);
+            },
+            del(list,index){
+                this.list.splice(index,1)
+            },
+            del1(list){
+                // console.log(this.isRed);
+                // if(list.isRed == true){
+                //     this.list.splice(0,1);
+                // }
+            }
+        }
+        })
+    </script>
+</body>
+</html>
