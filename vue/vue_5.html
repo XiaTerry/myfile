@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            justify-content:center;
+            align-content:center;
+            display:flex;
+            /* background-color:silver; */
+        }
+        #app{
+            width: 800px;
+            height: 600px;
+        }
+        #app .selected{
+            background: #af043f;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="text-center">
+            <form class="form-inline" @submit.prevent>
+                    <div class="form-group">
+                            <label for="exampleInputName2">商品名称</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入商品名称" v-model.trim="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName2">价格</label>
+                      <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入价格" v-model.number="price">
+                      <button type="submit" class="btn btn-default"@click="add">增加商品</button>
+                    </div>
+                   
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="exampleInputEmail2" placeholder="请输入商品名称" v-model.trim="keyName">
+                      <button type="submit" class="btn btn-default" @click="search">搜索</button>
+                    </div>
+                    
+                  </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>选择</td>
+                    <td>商品名称</td>
+                    <td>商品价格</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(list,index) in productList" @click="selected(list)" :class=" list.isRed? 'selected':'' ">
+                    <td><input type="checkbox" @click.stop :value="index" v-model="selectedList"></td>
+                    <td>{{list.productName}}</td>
+                    <td>{{list.productPrice}}￥</td>
+                    <td><button @click="remove(index)">删除</button></td>
+                </tr>
+                <tr>
+                    <td><button @click="delList">删除选中</button></td>
+                    <td colspan="3">总价是：{{total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                productList:[
+                {
+                    productName:'衣服',
+                    productPrice:203,
+                    isRed:false
+                },
+                {
+                    productName:'裤子',
+                    productPrice:103,
+                    isRed:false
+                },
+                {
+                    productName:'皮鞋',
+                    productPrice:703,
+                    isRed:false
+                },
+                {
+                    productName:'内衣',
+                    productPrice:120,
+                    isRed:false
+                },
+                {
+                    productName:'电脑',
+                    productPrice:22203,
+                    isRed:false
+                },
+                {
+                    productName:'帽子',
+                    productPrice:103,
+                    isRed:false
+                }
+                ],
+                selectedList:[],
+                sum:0,
+                name:'',
+                price:null,
+                keyName:''
+            },
+            methods:{
+                selected(list){
+                    list.isRed = !list.isRed;
+                    this.total + list.productPrice;
+                    },
+                remove(index){
+                    this.productList.splice(index,1);
+                },
+                delList(){
+                  this.productList =this.productList.filter((item,index)=>{
+                        if(!this.selectedList.includes(index)){
+                            return item;
+                        }
+                    });
+                    this.selectedList = [];
+                },
+                search(){
+                    this.productList = this.productList.filter((item,index)=>{
+                        if(item.productName.includes(this.keyName)){
+                            return item;
+                        }
+                    });
+                    this.keyName = '';
+                },
+                add(){
+                   this.productList.push({
+                       productName:this.name,
+                       productPrice:this.price,
+                       isRed:false
+                   });
+                    this.name = '';
+                    this.price = null;
+                }
+            },
+            computed:{
+                total(){
+                    return this.productList.reduce((sum,elem)=>{
+                        if(elem.isRed){
+                            sum =sum + parseInt(elem.productPrice);
+                        }
+                        return sum;
+                    },0)
+                }
+            }
+               
+        })
+    </script>
+</body>
+</html>

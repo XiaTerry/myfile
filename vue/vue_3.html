@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .selected{
+            background: #f00;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app" class="text-center">
+        <h1>todoList</h1>
+        <hr>
+            <form class="form-inline" @submit.prevent>
+                    <input v-model="key" type="text" class="form-control" id="exampleInputName2" placeholder="请输入商品名称">
+                    <button type="submit" class="btn btn-default" @click="query">搜索</button>
+                    <br>
+                    <div class="form-group">
+                      <label for="exampleInputName2">商品名称：</label>
+                      <input v-model="name" type="text" class="form-control" id="exampleInputName2" placeholder="请输入商品名称">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail2">价格：</label>
+                      <input v-model="price" type="text" class="form-control" id="exampleInputEmail2" placeholder="价格">
+                    </div>
+                    <button type="submit" class="btn btn-default" @click="add">增加</button>
+            </form>
+        <table class="table table-bordered text-center" >
+            <thead>
+                <tr>
+                    <td>选择</td>
+                    <td>商品名称</td>
+                    <td>商品价格</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(list,index) in productList" @click="select(list)" :class="list.isRed?'selected':''">
+                    <td><input type="checkbox" @click.stop :value="index" v-model="checkboxList"></td>
+                    <td>{{list.productName}}</td>
+                    <td>{{list.productPrice}}</td>
+                    <td><button class="glyphicon glyphicon-trash" @click="del(index)"></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button @click="delSelect()">删除选中</button>
+                    </td>
+                    <td colspan="3">总价是：{{total}}</td>
+                </tr>
+                    
+            </tbody>
+        </table>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                productList:[
+                    {
+                        productName:'衣服',
+                        productPrice:203,
+                        isRed:false,
+                    },
+                    {
+                        productName:'裤子',
+                        productPrice:189,
+                        isRed:false,
+                    },
+                    {
+                        productName:'Mac电脑',
+                        productPrice:16000,
+                        isRed:false,
+                    },
+                    {
+                        productName:'手机',
+                        productPrice:2099,
+                        isRed:false,
+                    },
+                    {
+                        productName:'帽子',
+                        productPrice:80,
+                        isRed:false,
+                    },
+                ],
+                sum:0,
+                checkboxList:[],
+                name:'',
+                price:null,
+                key:'',
+                arry:[]
+            },
+            methods:{
+                select(list){
+                    list.isRed = !list.isRed;
+                    this.total + list.productPrice;
+                },
+                del(index){
+                    this.productList.splice(index,1);
+                },
+                delSelect(){
+                   this.productList = this.productList.filter((item,index)=>{
+                        if(!this.checkboxList.includes(index)){
+                            return item;
+                        }
+                    });
+                    this.checkboxList = [];
+                },
+                query(){
+                   this.productList = this.productList.filter((item,index)=>{
+                        if(item.productName.includes(this.key)){
+                            return item;
+                        }
+                    })
+                    this.key = '';
+                },
+                add(){
+                    this.productList.push({
+                        productName:this.name,
+                        productPrice:this.price,
+                        isRed:false
+                    })
+                    this.name = '';
+                    this.price = null;
+                }
+            },
+            computed:{
+                total(){
+                    return this.productList.reduce((sum,elem)=>{
+                        if(elem.isRed){
+                            sum =sum +parseInt(elem.productPrice);
+                        }
+                        return sum;
+                    },0)
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
