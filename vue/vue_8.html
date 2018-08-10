@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .div1{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 v-drag>你好</h1>
+        <div class="div1" v-drag v-xx></div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      
+        Vue.directive('drag',(el,binding,vNode)=>{
+            el.style.position = 'absolute';
+            // console.log(el);
+            el.onmousedown = function(e){
+                // console.log(e);
+                let disx = e.clintX - el.offsetLeft; 
+                let disy = e.clintY - el.offsetTop;
+                el.onmousemove = function (e) {
+                    el.style.left = e.clientX - disx + 'px';
+                    el.style.top = e.clientY - disy + 'px';
+                    console.log(e.clientX);
+                };
+                el.onmouseup = function () {
+                    document.onmousemove = null;
+                };
+            };
+        });
+        Vue.directive('xx', {
+            bind: function () {
+                console.log('bind');
+            },
+            inserted: function () {
+                console.log('inserted');
+            },
+            update: function () {
+                console.log('update');
+            },
+            componentUpdated: function () {
+                console.log('componentUpdated');
+            },
+            unbind: function () {
+                console.log('unbind');
+            }
+        });
+        new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+</html>
