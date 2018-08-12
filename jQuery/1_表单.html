@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单demo1</title>
+    <style>
+        div{
+            padding: 2px;
+        }
+        input,textarea{
+            width: 200px;
+            border:1px solid #888;
+        }
+        .focus{
+            border:1px solid #f00;
+            background: #fcc;
+        }
+    </style>
+</head>
+<body>
+<form action="" id="regForm">
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            <label for="username">名称:</label>
+            <input type="text" id="username" value="名称">
+        </div>
+        <div>
+            <label for="password">密码:</label>
+            <input type="password" id="password" value="密码">
+        </div>
+        <div>
+            <label for="msg">详细信息：</label>
+            <textarea name="" id="msg">详细信息</textarea>
+        </div>
+    </fieldset>
+</form>
+
+<script src="jquery-1.12.4.js"></script>
+
+<script>
+    // $(function () {
+    //     $(':input').focus(function () {
+    //         $(this).addClass('focus');
+    //     }).blur(function () {
+    //         $(this).removeClass('focus');
+    //     });
+    // });
+    $(function(){
+        $(':input').focus(function () {
+            //当获取到焦点的时候将focus加入到input中，同时如果value的值为默认的值则将当前的value改为空。
+            $(this).addClass('focus');
+            if($(this).val()==this.defaultValue){
+                this.value='';
+            }
+        }).blur(function () {
+            //如果失去焦点把focus加到input中同时判断value的值是否空字符串，如果是默认否则加上当前的value值。
+            $(this).removeClass('focus').val(this.value==""?this.defaultValue:this.value);
+        })
+    });
+</script>
+</body>
+</html>
