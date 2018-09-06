@@ -13,9 +13,9 @@
     
     <script src="jquery-1.12.4.js"></script>
     <script>
-        // let movieUrl = 'https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/in_theaters';
-        // $.get(movieUrl,function(res){
-            // console.log(res.subjects);
+        let movieUrl = 'https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/in_theaters';
+        $.get(movieUrl,function(res){
+            console.log(res);
             // let $list = $('#list');
             // let $imgs =$('#imgs');
             // let $imgs = res.subjects[0].images.small
@@ -30,7 +30,7 @@
             //     $list.append($imgs)
             //     $list.append($li);
             // }
-        // },'json')
+        },'json')
 
         // let s = Symbol();
         // console.log(typeof(s));
@@ -38,10 +38,10 @@
         // let s1 = Symbol([1,2,3,4.2,2,4]);
         // console.log(s1);
 
-        function People(name , age){
-            this.name = this;
-            this.age = this;
-        }
+        // function People(name , age){
+        //     this.name = this;
+        //     this.age = this;
+        // }
     </script>
 </body>
 </html>

@@ -183,48 +183,48 @@
 //         // arr.splice(n, 1);
 //         console.log(arr); 
 
-        // let movieUrl = 'https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/in_theaters';
+        let movieUrl = 'https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/in_theaters';
         // Ajax 原理
 
-        // 创建 XMLHttpRequest 对象
-        // var xmlhttp;
-        // if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        //     xmlhttp = new XMLHttpRequest();
-        // } else {// code for IE6, IE5
-        //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        // }
+        //创建 XMLHttpRequest 对象
+        var xmlhttp;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
-        // // 发送请求
-        // xmlhttp.open("GET", movieUrl, true);
-        // xmlhttp.send();
+        // 发送请求
+        xmlhttp.open("GET", movieUrl, true);
+        xmlhttp.send();
 
-        // // 服务端响应
-        // xmlhttp.onreadystatechange = function () {
-        //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        //     //    console.log(xmlhttp.responseText);
-        //        let obj = JSON.parse(xmlhttp.responseText);
-        //        let obj1 = xmlhttp.responseText;
-        //        let obj2 = JSON.parse(obj1);
-        //        console.log(obj2.title);
-        //     //    console.log(obj.subjects[0]);
-        //     //    document.write(obj.subjects[0]);
-        //     }
-        // }
+        // 服务端响应
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //    console.log(xmlhttp.responseText);
+               let obj = JSON.parse(xmlhttp.responseText);
+               let obj1 = xmlhttp.responseText;
+               let obj2 = JSON.parse(obj1);
+               console.log(obj.title);
+            //    console.log(obj.subjects[0]);
+            //    document.write(obj.subjects[0]);
+            }
+        }
 
         //通过Jquery实现ajax请求
 
-        // $.get(movieUrl,function(res){
-        //     console.log(res.subjects);
+        $.get(movieUrl,function(res){
+            console.log(res.subjects);
             
-        // })
+        }) 
 
-        setInterval(() => 
-        { const now = new Date();
-        const hours = now.getHours().toString(); 
-        const minutes = now.getMinutes().toString();
-        const seconds = now.getSeconds().toString(); 
-        console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`);
-        },1000) 
+        // setInterval(() => 
+        // { const now = new Date();
+        // const hours = now.getHours().toString(); 
+        // const minutes = now.getMinutes().toString();
+        // const seconds = now.getSeconds().toString(); 
+        // console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`);
+        // },1000) 
         
     </script>
 </body>
